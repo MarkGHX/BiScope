@@ -32,4 +32,4 @@ Table of Contents
 <img src="Imgs/Dataset.png" width="900px"/>
 
 ## Code Implementation
-Due to delays in the university's internal processing, we need to postpone the release of our code to ensure compliance with their policies. We will update and publish the code as soon as the internal procedures are completed.
+Great news! All internal processes are complete. We are now finalizing and testing our code and expect to publish it within the next 1-2 weeks. Thanks for your patience!
