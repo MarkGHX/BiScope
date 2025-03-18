@@ -15,10 +15,14 @@ This work is licensed under a
 
 Table of Contents
 ---
-- [Overview](#overview)
-- [Dataset](#dataset)
-- [Code Implementation](#code-implementation)
-- [Running the Code](#running-the-code)
+- [BiScope: AI-generated Text Detection by Checking Memorization of Preceding Tokens](#biscope-ai-generated-text-detection-by-checking-memorization-of-preceding-tokens)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Dataset](#dataset)
+  - [Code Implementation](#code-implementation)
+    - [Code Structure](#code-structure)
+    - [Running the Code](#running-the-code)
+  - [Cite Our Work](#cite-our-work)
 
 
 ## Overview
@@ -95,3 +99,16 @@ For more details of the arguments, please refer to the table below:
 | `--detect_model`  | **Required** <br> *Choices:* Must be one of the keys in the model zoo (e.g., `llama2-7b`, `llama2-13b`, `llama3-8b`, `gemma-2b`, `gemma-7b`, `mistral-7b`) | Specifies the detection model used for feature extraction. This model is responsible for computing the loss features that indicate memorization of preceding tokens. We recommend  ```llama-2-7b``` for most of the cases.                                                |
 | `--train_dataset` | **Required** <br> *Format:* `{paraphrased or nonparaphrased}_{task}_{generative_model}` (e.g., `nonparaphrased_Arxiv_gpt-3.5-turbo`) | Indicates the training dataset. The first part specifies whether the dataset is paraphrased or nonparaphrased, the second part specifies the task/domain (e.g., Arxiv, Code, Essay), and the third part indicates which LLM generated the data. |
 | `--test_dataset`  | **Required** <br> *Format:* Same as `--train_dataset`                                                 | Indicates the testing dataset. If same as the ```--train_dataset```, then test in in-distribution setting. In a cross‑model OOD setting (when the task is the same but the generative model/paraphrase status changes), only the GPT data is used for testing. In other OOD cases (task changes), both human and GPT data are used.        |
+
+## Cite Our Work
+If you find our work helpful, please consider citing our paper:
+```bibtex
+@article{guo2024biscope,
+  title={BiScope: AI-generated Text Detection by Checking Memorization of Preceding Tokens},
+  author={Guo, Hanxi and Cheng, Siyuan and Jin, Xiaolong and Zhang, Zhuo and Zhang, Kaiyuan and Tao, Guanhong and Shen, Guangyu and Zhang, Xiangyu},
+  journal={Advances in Neural Information Processing Systems (NeurIPS)},
+  volume={37},
+  pages={104065--104090},
+  year={2024}
+}
+```
