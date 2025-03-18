@@ -17,6 +17,9 @@ Table of Contents
 ---
 - [Overview](#overview)
 - [Dataset](#dataset)
+- [Code Implementation](#code-implementation)
+- [Running the Code](#running-the-code)
+
 
 ## Overview
 - This is the official implementation for NeurIPS 2024 paper "[BiScope: AI-generated Text Detection by Checking Memorization of Preceding Tokens](https://neurips.cc/virtual/2024/poster/95814)".
