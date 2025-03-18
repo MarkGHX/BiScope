@@ -27,7 +27,7 @@ Table of Contents
 
 ## Overview
 - This is the official implementation for NeurIPS 2024 paper "[BiScope: AI-generated Text Detection by Checking Memorization of Preceding Tokens](https://neurips.cc/virtual/2024/poster/95814)".
-- [[video](https://neurips.cc/virtual/2024/poster/95814)\] | \[[slides](https://neurips.cc/media/neurips-2024/Slides/95814.pdf)\] | \[[poster](https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95814.png?t=1733630920.046255)\] | \[[paper](https://openreview.net/pdf?id=Hew2JSDycr)\]
+- [[video](https://neurips.cc/virtual/2024/poster/95814)\] | \[[slides](https://neurips.cc/media/neurips-2024/Slides/95814.pdf)\] | \[[poster](https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95814.png?t=1733630920.046255)\] | \[[paper](https://proceedings.neurips.cc/paper_files/paper/2024/file/bc808cf2d2444b0abcceca366b771389-Paper-Conference.pdf)\]
   
 <img src="Imgs/Overview.png" width="900px"/>
 
