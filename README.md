@@ -35,10 +35,12 @@ Table of Contents
 - We extend existing datasets by crafting more AI-generated data using five latest commercial LLMs, including GPT-3.5-Turbo, GPT-4-Turbo, Claude-3-Sonnet, Claude-3-Opus, and Gemini-1.0-Pro.
 - Our Datasets consist of 2 short natural language datasets (Arxiv, Yelp), 2 long natural language datasets (Creative, Essay), and 1 code dataset (Code).
 - We craft both the non-paraphrased version (`./Dataset`) and paraphrased version (`./Paraphrased_Dataset`) for each AI-generated data.
+- We have uploaded our dataset to Hugging Face <img src="https://huggingface.co/front/assets/huggingface_logo.svg"
+     alt="Hugging Face Logo"
+     width="25"
+     style="vertical-align: middle; margin-left: 5px;" />.  Please refer to the [link](https://huggingface.co/datasets/HanxiGuo/BiScope_Data) for more details.
 - Detailed dataset statistics:
 <img src="Imgs/Dataset.png" width="900px"/>
-
-- We also uploaded our dataset to Hugging Face. Please refer to the [link](https://huggingface.co/datasets/HanxiGuo/BiScope_Data) for more details.
 
 ## Code Implementation
 
