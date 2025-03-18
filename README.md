@@ -38,6 +38,8 @@ Table of Contents
 - Detailed dataset statistics:
 <img src="Imgs/Dataset.png" width="900px"/>
 
+- We also uploaded our dataset to Hugging Face. Please refer to the [link](https://huggingface.co/datasets/HanxiGuo/BiScope_Data) for more details.
+
 ## Code Implementation
 
 ### Code Structure
