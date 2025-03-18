@@ -64,7 +64,7 @@ The project is organized into two main Python files:
 ```bash
 conda create -n biscope_env python=3.11
 conda activate biscope_env
-# install pytorch, please refer to https://pytorch.org/get-started/locally/ to install the newest version that fit your device. We only show the install commands for the latest pytorch version.
+# install pytorch, please refer to https://pytorch.org/get-started/previous-versions/ to install the newest version that fit your device. We only show the install commands for the latest pytorch version.
 pip3 install torch torchvision torchaudio
 # install other dependencies
 pip install transformers scikit-learn tqdm numpy openai tenacity accelerate
