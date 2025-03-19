@@ -31,8 +31,14 @@ def main():
                         help='Format: {paraphrased or nonparaphrased}_{task}_{generative_model}')
     parser.add_argument('--test_dataset', type=str, required=True,
                         help='Format: {paraphrased or nonparaphrased}_{task}_{generative_model}')
+    parser.add_argument('--use_hf_dataset', type=bool, default=False, help="Load dataset from Hugging Face")
     args = parser.parse_args()
     
+    if args.use_hf_dataset:
+        print("Using Hugging Face datasets...")
+    else:
+        print("Using local datasets...")
+
     # Set seeds.
     random.seed(args.seed)
     np.random.seed(args.seed)

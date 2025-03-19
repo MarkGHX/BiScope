@@ -181,25 +181,41 @@ def data_generation(args, out_dir, dataset_type, task, generative_model):
     else:
         raise ValueError("Unknown detection model")
 
-    # Determine the base directory based on dataset_type.
-    if dataset_type == 'paraphrased':
-        base_dir = "./Paraphrased_Dataset"
+    if getattr(args, "use_hf_dataset", False):
+        # Load from Hugging Face dataset.
+        from datasets import load_dataset
+        ds = load_dataset("HanxiGuo/BiScope_Data", split="train")
+        # Map the dataset_type to a boolean flag.
+        paraphrased_flag = True if dataset_type == "paraphrased" else False
+
+        # Filter human data: use rows where task matches, and source is 'human'.
+        human_data = ds.filter(lambda x: x["task"] == task and x["source"].lower() == "human")
+        human_data = [s["text"] for s in human_data]
+
+        # Filter GPT-generated data: use rows where task and paraphrased flag match and source matches generative_model.
+        # (Assumes that the GPT-generated samples have source equal to the provided generative_model string.)
+        gpt_data = ds.filter(lambda x: x["task"] == task and x["paraphrased"] == paraphrased_flag and x["source"].lower() == generative_model.lower())
+        gpt_data = [s["text"] for s in gpt_data]
     else:
-        base_dir = "./Dataset"
-    
-    # Load human data. Human data do not have paraphrased version, so only use the normal data.
-    with open(f'./Dataset/{task}/{task}_human.json', 'r') as f:
-        human_data = json.load(f)
-    if task == 'Arxiv':
-        human_data = [s['abs'] for s in human_data]
-    elif task == 'Code':
-        human_data = [s[0] + s[1] for s in human_data]
-    elif task in ['Essay', 'Creative']:
-        human_data = [s.get('essay', s) for s in human_data]
-    
-    # Load GPT-generated data.
-    with open(f'{base_dir}/{task}/{task}_{generative_model}.json', 'r') as f:
-        gpt_data = json.load(f)
+        # Determine the base directory based on dataset_type.
+        if dataset_type == 'paraphrased':
+            base_dir = "./Paraphrased_Dataset"
+        else:
+            base_dir = "./Dataset"
+        
+        # Load human data. Human data do not have paraphrased version, so only use the normal data.
+        with open(f'./Dataset/{task}/{task}_human.json', 'r') as f:
+            human_data = json.load(f)
+        if task == 'Arxiv':
+            human_data = [s['abs'] for s in human_data]
+        elif task == 'Code':
+            human_data = [s[0] + s[1] for s in human_data]
+        elif task in ['Essay', 'Creative']:
+            human_data = [s.get('essay', s) for s in human_data]
+        
+        # Load GPT-generated data.
+        with open(f'{base_dir}/{task}/{task}_{generative_model}.json', 'r') as f:
+            gpt_data = json.load(f)
     
     # Define the human features file path internally.
     human_feat_path = os.path.join(out_dir, f"{task}_human_features.pkl")
