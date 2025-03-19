@@ -105,7 +105,7 @@ For more details of the arguments, please refer to the table below:
 | `--use_hf_dataset`  | *Default* `False` <br> *Choices:* `True`/`False`                                                | When set to `True`, the dataset is loaded from the Hugging Face dataset `HanxiGuo/BiScope_Data` using the `datasets` library. Otherwise, the code uses the local JSON files for data loading.        |
 
 ## Cite Our Work
- If you find our work helpful, please consider citing our paper:
+ If you find our work helpful, please consider citing our paper and giving us a star &star;:
  ```bibtex
  @article{guo2024biscope,
    title={BiScope: AI-generated Text Detection by Checking Memorization of Preceding Tokens},
