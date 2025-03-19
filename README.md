@@ -15,15 +15,18 @@ This work is licensed under a
 
 Table of Contents
 ---
-- [Overview](#overview)
-- [Dataset](#dataset)
-- [Code Implementation](#code-implementation)
-- [Running the Code](#running-the-code)
-
+- [BiScope: AI-generated Text Detection by Checking Memorization of Preceding Tokens](#biscope-ai-generated-text-detection-by-checking-memorization-of-preceding-tokens)
+   - [Table of Contents](#table-of-contents)
+   - [Overview](#overview)
+   - [Dataset](#dataset)
+   - [Code Implementation](#code-implementation)
+     - [Code Structure](#code-structure)
+     - [Running the Code](#running-the-code)
+   - [Cite Our Work](#cite-our-work)
 
 ## Overview
 - This is the official implementation for NeurIPS 2024 paper "[BiScope: AI-generated Text Detection by Checking Memorization of Preceding Tokens](https://neurips.cc/virtual/2024/poster/95814)".
-- [[video](https://neurips.cc/virtual/2024/poster/95814)\] | \[[slides](https://neurips.cc/media/neurips-2024/Slides/95814.pdf)\] | \[[poster](https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95814.png?t=1733630920.046255)\] | \[[paper](https://openreview.net/pdf?id=Hew2JSDycr)\]
+- [[video](https://neurips.cc/virtual/2024/poster/95814)\] | \[[slides](https://neurips.cc/media/neurips-2024/Slides/95814.pdf)\] | \[[poster](https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95814.png?t=1733630920.046255)\] | \[[paper](https://proceedings.neurips.cc/paper_files/paper/2024/file/bc808cf2d2444b0abcceca366b771389-Paper-Conference.pdf)\]
   
 <img src="Imgs/Overview.png" width="900px"/>
 
@@ -31,6 +34,10 @@ Table of Contents
 - We extend existing datasets by crafting more AI-generated data using five latest commercial LLMs, including GPT-3.5-Turbo, GPT-4-Turbo, Claude-3-Sonnet, Claude-3-Opus, and Gemini-1.0-Pro.
 - Our Datasets consist of 2 short natural language datasets (Arxiv, Yelp), 2 long natural language datasets (Creative, Essay), and 1 code dataset (Code).
 - We craft both the non-paraphrased version (`./Dataset`) and paraphrased version (`./Paraphrased_Dataset`) for each AI-generated data.
+- We have uploaded our dataset to Hugging Face <img src="https://huggingface.co/front/assets/huggingface_logo.svg"
+    alt="Hugging Face Logo"
+    width="25"
+    style="vertical-align: middle; margin-left: 5px;" />.  Please refer to the [link](https://huggingface.co/datasets/HanxiGuo/BiScope_Data) for more details.
 - Detailed dataset statistics:
 <img src="Imgs/Dataset.png" width="900px"/>
 
@@ -96,3 +103,16 @@ For more details of the arguments, please refer to the table below:
 | `--train_dataset` | **Required** <br> *Format:* `{paraphrased or nonparaphrased}_{task}_{generative_model}` (e.g., `nonparaphrased_Arxiv_gpt-3.5-turbo`) | Indicates the training dataset. The first part specifies whether the dataset is paraphrased or nonparaphrased, the second part specifies the task/domain (e.g., Arxiv, Code, Essay), and the third part indicates which LLM generated the data. |
 | `--test_dataset`  | **Required** <br> *Format:* Same as `--train_dataset`                                                 | Indicates the testing dataset. If same as the ```--train_dataset```, then test in in-distribution setting. In a cross‑model OOD setting (when the task is the same but the generative model/paraphrase status changes), only the GPT data is used for testing. In other OOD cases (task changes), both human and GPT data are used.        |
 | `--use_hf_dataset`  | *Default* `False` <br> *Choices:* `True`/`False`                                                | When set to `True`, the dataset is loaded from the Hugging Face dataset `HanxiGuo/BiScope_Data` using the `datasets` library. Otherwise, the code uses the local JSON files for data loading.        |
+
+## Cite Our Work
+ If you find our work helpful, please consider citing our paper:
+ ```bibtex
+ @article{guo2024biscope,
+   title={BiScope: AI-generated Text Detection by Checking Memorization of Preceding Tokens},
+   author={Guo, Hanxi and Cheng, Siyuan and Jin, Xiaolong and Zhang, Zhuo and Zhang, Kaiyuan and Tao, Guanhong and Shen, Guangyu and Zhang, Xiangyu},
+   journal={Advances in Neural Information Processing Systems (NeurIPS)},
+   volume={37},
+   pages={104065--104090},
+   year={2024}
+ }
+ ```
