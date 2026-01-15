@@ -104,6 +104,41 @@ For more details of the arguments, please refer to the table below:
 | `--test_dataset`  | **Required** <br> *Format:* Same as `--train_dataset`                                                 | Indicates the testing dataset. If same as the ```--train_dataset```, then test in in-distribution setting. In a cross‑model OOD setting (when the task is the same but the generative model/paraphrase status changes), only the GPT data is used for testing. In other OOD cases (task changes), both human and GPT data are used.        |
 | `--use_hf_dataset`  | *Default* `False` <br> *Choices:* `True`/`False`                                                | When set to `True`, the dataset is loaded from the Hugging Face dataset `HanxiGuo/BiScope_Data` using the `datasets` library. Otherwise, the code uses the local JSON files for data loading.        |
 
+**3. Run the motivation example:**
+
+The motivation example demonstrates the core intuition behind BiScope by comparing Next Token and Last Token features for human vs. AI-generated text.
+
+```bash
+# Run feature collection and generate visualization
+python motivation.py \
+    --detect_model llama2-7b \
+    --dataset nonparaphrased_Yelp_gpt-4-turbo-preview \
+    --phase all
+
+# Or run in separate phases
+# Phase 1: Collect features only
+python motivation.py \
+    --detect_model llama2-7b \
+    --dataset nonparaphrased_Yelp_gpt-4-turbo-preview \
+    --phase collect
+
+# Phase 2: Generate plot from saved features
+python motivation.py \
+    --detect_model llama2-7b \
+    --dataset nonparaphrased_Yelp_gpt-4-turbo-preview \
+    --phase plot
+```
+
+The script will generate a 2×3 subplot figure showing:
+- (a) Next Token Rank histogram
+- (b) Last Token Rank histogram
+- (c) Both Rank scatter plot
+- (d) Next Token CE histogram
+- (e) Last Token CE histogram
+- (f) Both CE scatter plot
+
+Results are saved in `./motivation_results/` by default.
+
 ## Cite Our Work
  If you find our work helpful, please consider citing our paper and giving us a star &star;:
  ```bibtex
